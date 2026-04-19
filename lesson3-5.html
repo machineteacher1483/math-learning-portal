@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3-5: Systems by Elimination — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html" class="active">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="unit3-linear.html">Unit 3</a> <span>›</span> <span>Lesson 5</span></div>
+    <span class="tag tag-green">Lesson 5 of 5</span>
+    <h1>Systems of Equations: Elimination</h1>
+    <p class="lead">Elimination is a powerful method for solving systems — especially when neither equation is already solved for a variable. Add the equations together to "eliminate" one unknown.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>The Idea Behind Elimination</h2>
+    <p>If one equation has <span class="math-inline">+3y</span> and the other has <span class="math-inline">−3y</span>, adding them makes the y-terms cancel — eliminating that variable. Then you solve for the remaining variable.</p>
+    <div class="math-block">
+       x + 3y = 11   ... (1)<br>
+       x − 3y =  1   ... (2)<br>
+      ─────────────<br>
+      2x     = 12   (add equations)<br>
+       x = 6<br>
+      Then: 6 + 3y = 11 → y = 5/3... (wait, let's use (1): 6+3y=11 → 3y=5 → y=5/3)
+    </div>
+    <p style="margin-top:12px; font-size:0.85rem; color:var(--ink-faint);">Tip: always double-check by substituting back.</p>
+  </section>
+
+  <section>
+    <h3>Example 1</h3>
+    <h2>Direct Elimination</h2>
+    <p>Solve: <span class="math-inline">2x + y = 8</span> and <span class="math-inline">3x − y = 7</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Notice: +y and −y — they cancel when added</div>
+      <div class="step"><span class="step-num">2.</span> Add equations: (2x+y) + (3x−y) = 8+7</div>
+      <div class="step"><span class="step-num">3.</span> 5x = 15  →  x = 3</div>
+      <div class="step"><span class="step-num">4.</span> Substitute x=3 into Eq.1: 2(3)+y=8  →  y=2</div>
+      <div class="step"><span class="step-num">5.</span> Solution: (3, 2)</div>
+      <div class="step"><span class="step-num">6.</span> Check Eq.2: 3(3)−2 = 9−2 = 7 ✓</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Example 2</h3>
+    <h2>Multiplying to Create Opposite Coefficients</h2>
+    <p>Solve: <span class="math-inline">3x + 2y = 12</span> and <span class="math-inline">x + y = 5</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> No variables cancel directly. Multiply Eq.2 by −2:</div>
+      <div class="step"><span class="step-num">2.</span> −2(x + y) = −2(5)  →  −2x − 2y = −10</div>
+      <div class="step"><span class="step-num">3.</span> Now add to Eq.1:</div>
+      <div class="step"><span class="step-num">4.</span>  3x + 2y =  12</div>
+      <div class="step"><span class="step-num">5.</span> −2x − 2y = −10</div>
+      <div class="step"><span class="step-num">6.</span> ──────────────</div>
+      <div class="step"><span class="step-num">7.</span>    x     =   2</div>
+      <div class="step"><span class="step-num">8.</span> Sub into Eq.2: 2 + y = 5  →  y = 3</div>
+      <div class="step"><span class="step-num">9.</span> Solution: (2, 3) ✓</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Special Cases</h3>
+    <h2>No Solution or Infinite Solutions</h2>
+    <p>Sometimes when you add the equations, <em>both</em> variables cancel:</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;">
+      <div style="background:#fdf0f0; border:1px solid #f0a0a0; border-radius:6px; padding:16px;">
+        <strong style="color:#c0392b;">No Solution</strong>
+        <div class="math-block" style="background:transparent; border:none; padding:8px 0; font-size:0.9rem;">
+          x + y = 3<br>
+          x + y = 7<br>
+          ─────<br>
+          0 = −4  (impossible!)
+        </div>
+        <p style="font-size:0.82rem; color:#c0392b;">Parallel lines — never intersect.</p>
+      </div>
+      <div style="background:#e8faf1; border:1px solid #a8e6c1; border-radius:6px; padding:16px;">
+        <strong style="color:#1a7a45;">Infinite Solutions</strong>
+        <div class="math-block" style="background:transparent; border:none; padding:8px 0; font-size:0.9rem;">
+          2x + 4y = 8<br>
+           x + 2y = 4<br>
+          ─────<br>
+          0 = 0  (always true!)
+        </div>
+        <p style="font-size:0.82rem; color:#1a7a45;">Same line — infinite intersections.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Only multiplying part of an equation — you must multiply EVERY term</li>
+      <li class="bad">Adding when you should subtract (or vice versa) — make sure the terms you want to cancel are opposites</li>
+      <li class="bad">Forgetting to find the second variable after eliminating the first</li>
+      <li class="ok">Multiply an entire equation by a constant to create matching (opposite) coefficients</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p><strong>Q:</strong> Solve using elimination: <span class="math-inline">4x + 3y = 25</span> and <span class="math-inline">2x − 3y = 5</span>.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        +3y and −3y cancel when added:<br>
+        6x = 30  →  x = 5<br>
+        4(5) + 3y = 25  →  3y = 5  →  y = 5/3<br>
+        <strong>Solution: (5, 5/3)</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok">Create opposite coefficients by multiplying an equation by a constant</li>
+      <li class="ok">Add the equations to eliminate one variable</li>
+      <li class="ok">Solve for the remaining variable, then substitute back</li>
+      <li class="ok">0 = constant (non-zero) → no solution; 0 = 0 → infinite solutions</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson3-4.html" class="btn btn-outline">← Lesson 4: Substitution</a>
+    <a href="quiz3.html" class="btn btn-accent">Take the Unit 3 Quiz →</a>
+  </div>
+</div>
+</body>
+</html>
