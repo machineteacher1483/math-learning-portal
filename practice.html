@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .topic-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 32px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 12px 22px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-faint);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover { color: var(--ink); }
+    .tab-btn.active { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+
+    .topic-panel { display: none; }
+    .topic-panel.active { display: block; }
+
+    .practice-q {
+      background: var(--paper-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .practice-q h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: 14px;
+    }
+
+    .answer-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .answer-input {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      width: 140px;
+      background: var(--paper);
+      color: var(--ink);
+      transition: border-color 0.15s;
+      outline: none;
+    }
+    .answer-input:focus { border-color: var(--ink); }
+    .answer-input.correct { border-color: var(--accent-green); background: #e8faf1; }
+    .answer-input.wrong { border-color: var(--accent); background: #fdf0f0; }
+
+    .check-btn {
+      padding: 10px 18px;
+      background: var(--ink);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: background 0.15s;
+    }
+    .check-btn:hover { background: var(--accent); }
+
+    .hint-btn {
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--ink-faint);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      transition: all 0.15s;
+    }
+    .hint-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+    .feedback-line {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      min-height: 22px;
+      display: none;
+    }
+    .feedback-line.show { display: block; }
+    .feedback-line.ok { color: var(--accent-green); }
+    .feedback-line.err { color: var(--accent); }
+
+    .hint-box {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: var(--paper-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      display: none;
+    }
+    .hint-box.show { display: block; }
+
+    .section-score {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 14px 20px;
+      background: var(--paper-warm);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+    .section-score .label { font-size:0.82rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; }
+    .section-score .val { font-family:'Lora',serif; font-size:1.6rem; font-weight:700; color:var(--ink); }
+
+    .reset-btn {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink-faint);
+      transition: all 0.15s;
+    }
+    .reset-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html" class="active">Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Practice Problems</h1>
+    <p class="lead">Type your answer in the box and click Check. Use the hint button if you're stuck. Work through as many as you need.</p>
+  </div>
+
+  <div class="topic-tabs">
+    <button class="tab-btn active" onclick="switchTab('functions', this)">Unit 1: Functions</button>
+    <button class="tab-btn" onclick="switchTab('quadratics', this)">Unit 2: Quadratics</button>
+    <button class="tab-btn" onclick="switchTab('linear', this)">Unit 3: Linear</button>
+  </div>
+
+  <!-- ══ FUNCTIONS ══ -->
+  <div class="topic-panel active" id="panel-functions">
+    <div class="section-score">
+      <div><div class="label">Score</div><div class="val" id="score-functions">0 / 0</div></div>
+      <button class="reset-btn" onclick="resetPanel('functions')">Reset</button>
+    </div>
+
+    <div class="practice-q" id="pq-f1">
+      <h3>Q1. If f(x) = 4x − 3, what is f(5)?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f1" placeholder="Answer" onkeydown="if(event.key==='Enter')checkAnswer('f1','17','functions')">
+        <button class="check-btn" onclick="checkAnswer('f1','17','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f1')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f1">Substitute x=5: f(5) = 4(5) − 3 = 20 − 3 = ?</div>
+      <div class="feedback-line" id="fb-f1"></div>
+    </div>
+
+    <div class="practice-q" id="pq-f2">
+      <h3>Q2. If g(x) = x² − 2, what is g(−4)?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f2" placeholder="Answer" onkeydown="if(event.key==='Enter')checkAnswer('f2','14','functions')">
+        <button class="check-btn" onclick="checkAnswer('f2','14','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f2')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f2">g(−4) = (−4)² − 2. Remember: (−4)² = 16, not −16.</div>
+      <div class="feedback-line" id="fb-f2"></div>
+    </div>
+
+    <div class="practice-q" id="pq-f3">
+      <h3>Q3. Is the relation {(1,3), (2,5), (1,7)} a function? Type YES or NO.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f3" placeholder="YES or NO" onkeydown="if(event.key==='Enter')checkAnswer('f3','no','functions')">
+        <button class="check-btn" onclick="checkAnswer('f3','no','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f3')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f3">Look at the inputs (first values). Does any input repeat with a different output?</div>
+      <div class="feedback-line" id="fb-f3"></div>
+    </div>
+
+    <div class="practice-q" id="pq-f4">
+      <h3>Q4. What is the domain of f(x) = √(x − 7)? Answer as: x ≥ _ (type just the number)</h3>
+      <div class="answer-row">
+        <span style="font-family:'JetBrains Mono',monospace; margin-right:4px;">x ≥</span>
+        <input class="answer-input" id="f4" placeholder="?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('f4','7','functions')">
+        <button class="check-btn" onclick="checkAnswer('f4','7','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f4')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f4">The inside of a square root must be ≥ 0. Set x − 7 ≥ 0 and solve.</div>
+      <div class="feedback-line" id="fb-f4"></div>
+    </div>
+
+    <div class="practice-q" id="pq-f5">
+      <h3>Q5. Let f(x) = 3x and g(x) = x + 2. What is f(g(4))?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f5" placeholder="Answer" onkeydown="if(event.key==='Enter')checkAnswer('f5','18','functions')">
+        <button class="check-btn" onclick="checkAnswer('f5','18','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f5')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f5">Work inside-out. First find g(4) = 4 + 2 = 6. Then find f(6) = 3(6) = ?</div>
+      <div class="feedback-line" id="fb-f5"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q6. If h(x) = 2x + 5, find x when h(x) = 19.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f6" placeholder="x = ?" onkeydown="if(event.key==='Enter')checkAnswer('f6','7','functions')">
+        <button class="check-btn" onclick="checkAnswer('f6','7','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f6')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f6">Set 2x + 5 = 19. Solve for x.</div>
+      <div class="feedback-line" id="fb-f6"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q7. Given f(x) = x² + 3, find f(2x). Simplify. (Type without spaces: e.g. 4x^2+3)</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f7" placeholder="Expression" style="width:180px;" onkeydown="if(event.key==='Enter')checkAnswer('f7','4x^2+3','functions')">
+        <button class="check-btn" onclick="checkAnswer('f7','4x^2+3','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f7')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f7">Replace x with (2x): f(2x) = (2x)² + 3 = 4x² + 3</div>
+      <div class="feedback-line" id="fb-f7"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q8. Is the graph of a circle a function? Type YES or NO.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="f8" placeholder="YES or NO" onkeydown="if(event.key==='Enter')checkAnswer('f8','no','functions')">
+        <button class="check-btn" onclick="checkAnswer('f8','no','functions')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-f8')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-f8">Apply the vertical line test. Does a vertical line ever cross the circle at more than one point?</div>
+      <div class="feedback-line" id="fb-f8"></div>
+    </div>
+  </div>
+
+  <!-- ══ QUADRATICS ══ -->
+  <div class="topic-panel" id="panel-quadratics">
+    <div class="section-score">
+      <div><div class="label">Score</div><div class="val" id="score-quadratics">0 / 0</div></div>
+      <button class="reset-btn" onclick="resetPanel('quadratics')">Reset</button>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q1. What is 'a' in the equation 5x² − 3x + 1 = 0?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q1" placeholder="a = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('q1','5','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q1','5','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q1')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q1">In ax² + bx + c = 0, a is the coefficient of x².</div>
+      <div class="feedback-line" id="fb-q1"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q2. Solve by factoring: x² + 9x + 20 = 0. Enter the smaller root.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q2" placeholder="Smaller x" style="width:100px;" onkeydown="if(event.key==='Enter')checkAnswer('q2','-5','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q2','-5','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q2')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q2">Find two numbers that multiply to 20 and add to 9. Try 4 and 5.</div>
+      <div class="feedback-line" id="fb-q2"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q3. Evaluate the discriminant of x² + 6x + 9 = 0.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q3" placeholder="Δ = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('q3','0','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q3','0','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q3')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q3">Δ = b² − 4ac. Here a=1, b=6, c=9. Calculate 36 − 4(1)(9).</div>
+      <div class="feedback-line" id="fb-q3"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q4. How many real solutions does x² + x + 1 = 0 have?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q4" placeholder="0, 1, or 2" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('q4','0','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q4','0','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q4')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q4">Find Δ = b²−4ac = 1−4(1)(1) = 1−4 = −3. Is this positive, zero, or negative?</div>
+      <div class="feedback-line" id="fb-q4"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q5. The parabola y = 3x² − 12x + 7 — what is the x-coordinate of the vertex?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q5" placeholder="x = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('q5','2','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q5','2','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q5')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q5">x = −b/(2a) = −(−12)/(2·3) = 12/6 = ?</div>
+      <div class="feedback-line" id="fb-q5"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q6. Does y = −x² + 4 open upward or downward? Type UP or DOWN.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q6" placeholder="UP or DOWN" onkeydown="if(event.key==='Enter')checkAnswer('q6','down','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q6','down','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q6')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q6">Look at the sign of a (the coefficient of x²). If a < 0, the parabola opens downward.</div>
+      <div class="feedback-line" id="fb-q6"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q7. Factor: x² − 36. Type in the form (x+a)(x-b) without spaces.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q7" placeholder="(x+?)(x-?)" style="width:180px;" onkeydown="if(event.key==='Enter')checkAnswer('q7','(x+6)(x-6)','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q7','(x+6)(x-6)','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q7')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q7">Difference of squares: x² − k² = (x+k)(x−k). What is k when k²=36?</div>
+      <div class="feedback-line" id="fb-q7"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q8. Complete the square: what do you add to x² + 10x to make it a perfect square? </h3>
+      <div class="answer-row">
+        <input class="answer-input" id="q8" placeholder="Add ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('q8','25','quadratics')">
+        <button class="check-btn" onclick="checkAnswer('q8','25','quadratics')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-q8')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-q8">Take half of the coefficient of x: 10/2 = 5. Then square it: 5² = ?</div>
+      <div class="feedback-line" id="fb-q8"></div>
+    </div>
+  </div>
+
+  <!-- ══ LINEAR ══ -->
+  <div class="topic-panel" id="panel-linear">
+    <div class="section-score">
+      <div><div class="label">Score</div><div class="val" id="score-linear">0 / 0</div></div>
+      <button class="reset-btn" onclick="resetPanel('linear')">Reset</button>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q1. Find the slope through (3, 7) and (7, 15).</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l1" placeholder="m = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('l1','2','linear')">
+        <button class="check-btn" onclick="checkAnswer('l1','2','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l1')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l1">m = (y₂−y₁)/(x₂−x₁) = (15−7)/(7−3) = ?</div>
+      <div class="feedback-line" id="fb-l1"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q2. What is the slope of y = −5x + 3?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l2" placeholder="m = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('l2','-5','linear')">
+        <button class="check-btn" onclick="checkAnswer('l2','-5','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l2')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l2">In y = mx + b, m is the slope. Read it directly from the equation.</div>
+      <div class="feedback-line" id="fb-l2"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q3. Write the equation of the line: slope = 3, y-intercept = −2. (Format: y=3x-2)</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l3" placeholder="y=?" style="width:160px;" onkeydown="if(event.key==='Enter')checkAnswer('l3','y=3x-2','linear')">
+        <button class="check-btn" onclick="checkAnswer('l3','y=3x-2','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l3')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l3">Use y = mx + b. Substitute m=3 and b=−2.</div>
+      <div class="feedback-line" id="fb-l3"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q4. What is the slope of a line perpendicular to y = 2x + 1? Enter as a fraction like -1/2.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l4" placeholder="m = ?" style="width:100px;" onkeydown="if(event.key==='Enter')checkAnswer('l4','-1/2','linear')">
+        <button class="check-btn" onclick="checkAnswer('l4','-1/2','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l4')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l4">Perpendicular slope = negative reciprocal. Slope is 2, so flip and negate: −1/2.</div>
+      <div class="feedback-line" id="fb-l4"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q5. Solve the system by substitution. y = x + 3 and 2x + y = 12. What is x?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l5" placeholder="x = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('l5','3','linear')">
+        <button class="check-btn" onclick="checkAnswer('l5','3','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l5')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l5">Substitute y=x+3 into 2x+y=12: 2x+(x+3)=12 → 3x+3=12 → 3x=9 → x=?</div>
+      <div class="feedback-line" id="fb-l5"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q6. Solve by elimination: x + y = 8 and x − y = 2. What is x?</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l6" placeholder="x = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('l6','5','linear')">
+        <button class="check-btn" onclick="checkAnswer('l6','5','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l6')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l6">Add the two equations: 2x = 10 → x = ?</div>
+      <div class="feedback-line" id="fb-l6"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q7. What is the y-intercept of the line 3x + 2y = 12? Enter just the number.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l7" placeholder="y-int = ?" style="width:80px;" onkeydown="if(event.key==='Enter')checkAnswer('l7','6','linear')">
+        <button class="check-btn" onclick="checkAnswer('l7','6','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l7')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l7">Set x=0: 3(0)+2y=12 → 2y=12 → y=?</div>
+      <div class="feedback-line" id="fb-l7"></div>
+    </div>
+
+    <div class="practice-q">
+      <h3>Q8. Are the lines y = 4x + 1 and y = 4x − 7 parallel, perpendicular, or neither? Type PARALLEL, PERPENDICULAR, or NEITHER.</h3>
+      <div class="answer-row">
+        <input class="answer-input" id="l8" placeholder="Answer" style="width:200px;" onkeydown="if(event.key==='Enter')checkAnswer('l8','parallel','linear')">
+        <button class="check-btn" onclick="checkAnswer('l8','parallel','linear')">Check</button>
+        <button class="hint-btn" onclick="toggleHint('hint-l8')">Hint</button>
+      </div>
+      <div class="hint-box" id="hint-l8">Both lines have slope 4. Lines with the same slope and different y-intercepts are...?</div>
+      <div class="feedback-line" id="fb-l8"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const scores = { functions: {correct:0,attempted:0}, quadratics: {correct:0,attempted:0}, linear: {correct:0,attempted:0} };
+const answered = {};
+
+function switchTab(panel, btn) {
+  document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + panel).classList.add('active');
+  btn.classList.add('active');
+}
+
+function checkAnswer(id, correct, section) {
+  if (answered[id]) return;
+  const input = document.getElementById(id);
+  const fb = document.getElementById('fb-' + id);
+  const userVal = input.value.trim().toLowerCase().replace(/\s/g,'');
+  const correctVal = correct.toLowerCase().replace(/\s/g,'');
+
+  answered[id] = true;
+  scores[section].attempted++;
+  input.disabled = true;
+
+  if (userVal === correctVal) {
+    input.classList.add('correct');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'feedback-line show ok';
+    scores[section].correct++;
+  } else {
+    input.classList.add('wrong');
+    fb.textContent = `✗ Not quite. The answer is: ${correct}`;
+    fb.className = 'feedback-line show err';
+  }
+  updateScore(section);
+}
+
+function toggleHint(id) {
+  const h = document.getElementById(id);
+  h.classList.toggle('show');
+}
+
+function updateScore(section) {
+  const s = scores[section];
+  document.getElementById('score-' + section).textContent = `${s.correct} / ${s.attempted}`;
+}
+
+function resetPanel(section) {
+  scores[section] = {correct:0, attempted:0};
+  updateScore(section);
+  const panel = document.getElementById('panel-' + section);
+  panel.querySelectorAll('.answer-input').forEach(inp => {
+    const id = inp.id;
+    answered[id] = false;
+    inp.disabled = false;
+    inp.value = '';
+    inp.classList.remove('correct','wrong');
+    const fb = document.getElementById('fb-' + id);
+    if (fb) { fb.className = 'feedback-line'; fb.textContent = ''; }
+  });
+  panel.querySelectorAll('.hint-box').forEach(h => h.classList.remove('show'));
+}
+</script>
+
+</body>
+</html>

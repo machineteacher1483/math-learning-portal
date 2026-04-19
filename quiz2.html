@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2 Quiz: Quadratics — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz-header { text-align:center; padding:40px 20px 32px; border-bottom:1px solid var(--border); margin-bottom:32px; }
+    .q-counter { font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px; }
+    .progress-wrap { background:var(--border); border-radius:99px; height:5px; margin:16px auto; max-width:400px; }
+    .progress-fill { height:100%; background:var(--accent-blue); border-radius:99px; transition:width 0.4s ease; width:0%; }
+    .question-card { display:none; animation:fadeIn 0.3s ease; }
+    .question-card.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+    .q-text { font-family:'Lora',serif; font-size:1.15rem; color:var(--ink); margin-bottom:24px; line-height:1.5; }
+    .choices { display:flex; flex-direction:column; gap:10px; }
+    .choice { display:block; width:100%; text-align:left; padding:14px 20px; border:1.5px solid var(--border); border-radius:var(--radius); background:var(--paper); cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--ink-light); transition:all 0.15s; }
+    .choice:hover:not(:disabled) { border-color:var(--ink); background:var(--paper-warm); color:var(--ink); }
+    .choice.correct { background:#e8faf1; border-color:var(--accent-green); color:#1a7a45; font-weight:600; }
+    .choice.wrong { background:#fdf0f0; border-color:var(--accent); color:var(--accent); }
+    .choice:disabled { cursor:default; }
+    .explanation { margin-top:16px; padding:14px 18px; border-radius:var(--radius); font-size:0.9rem; display:none; }
+    .explanation.show { display:block; }
+    .explanation.correct-exp { background:#e8faf1; color:#1a7a45; border:1px solid #a8e6c1; }
+    .explanation.wrong-exp { background:#fdf0f0; color:#8b1a1a; border:1px solid #f0a0a0; }
+    .nav-btns { margin-top:24px; display:flex; justify-content:flex-end; }
+    #results { display:none; text-align:center; padding:20px 0; }
+    #results.show { display:block; }
+    .score-ring { width:140px; height:140px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 24px; font-family:'Lora',serif; }
+    .score-ring .big { font-size:2.8rem; font-weight:700; line-height:1; }
+    .score-ring .small { font-size:0.85rem; opacity:0.7; }
+    .score-A { background:#e8faf1; border:4px solid #27ae60; color:#1a7a45; }
+    .score-B { background:#f0f6ff; border:4px solid #2980b9; color:#1a5a80; }
+    .score-C { background:#fffbf0; border:4px solid #e67e22; color:#8b4a00; }
+    .score-D { background:#fdf0f0; border:4px solid #c0392b; color:#8b1a1a; }
+    .results-breakdown { text-align:left; margin-top:28px; }
+    .result-item { display:flex; align-items:flex-start; gap:12px; padding:14px 0; border-bottom:1px solid var(--border); font-size:0.9rem; }
+    .result-item:last-child { border-bottom:none; }
+    .result-icon { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+    .result-q { color:var(--ink); font-weight:500; }
+    .result-a { color:var(--ink-faint); font-size:0.82rem; margin-top:3px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html" class="active">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container" style="max-width:680px;">
+  <div class="quiz-header">
+    <div class="breadcrumb" style="justify-content:center;">
+      <a href="unit2-quadratics.html">Unit 2: Quadratics</a> <span>›</span> <span>Quiz</span>
+    </div>
+    <span class="tag tag-blue" style="margin:10px auto; display:inline-block;">Unit 2 Checkpoint</span>
+    <h1 style="font-size:1.9rem;">Quadratics Quiz</h1>
+    <p style="color:var(--ink-faint); font-size:0.9rem;">10 questions · No time limit · Instant feedback</p>
+    <div class="progress-wrap"><div class="progress-fill" id="progress"></div></div>
+    <div class="q-counter" id="qcounter">Question 1 of 10</div>
+  </div>
+  <section id="quiz-section"></section>
+  <section id="results">
+    <div class="score-ring" id="scoreRing">
+      <div class="big" id="scoreFrac"></div>
+      <div class="small">correct</div>
+    </div>
+    <h2 id="scoreMsg" style="font-size:1.5rem; margin-bottom:8px;"></h2>
+    <p id="scoreDetail" style="color:var(--ink-faint); margin-bottom:0;"></p>
+    <div class="results-breakdown" id="breakdown"></div>
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:32px; flex-wrap:wrap;">
+      <button onclick="restart()" class="btn btn-accent">Retake Quiz</button>
+      <a href="practice.html" class="btn btn-outline">More Practice</a>
+      <a href="unit3-linear.html" class="btn btn-primary">Next Unit →</a>
+    </div>
+  </section>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "What is the standard form of a quadratic equation?",
+    choices: ["y = mx + b", "ax² + bx + c = 0", "a(x−h)² + k", "ax³ + bx² + cx + d = 0"],
+    answer: 1,
+    exp: "The standard form of a quadratic is ax² + bx + c = 0, where a ≠ 0."
+  },
+  {
+    q: "Identify a, b, and c in the equation 3x² − 7x + 2 = 0.",
+    choices: ["a=3, b=7, c=2", "a=3, b=−7, c=2", "a=−7, b=3, c=2", "a=2, b=−7, c=3"],
+    answer: 1,
+    exp: "Reading directly from 3x² − 7x + 2 = 0: a=3 (coefficient of x²), b=−7 (coefficient of x), c=2 (constant). Don't lose the negative sign on b!"
+  },
+  {
+    q: "Solve by factoring: x² + 5x + 6 = 0",
+    choices: ["x = 2 or x = 3", "x = −2 or x = −3", "x = 1 or x = 6", "x = −1 or x = −6"],
+    answer: 1,
+    exp: "Find two numbers that multiply to 6 and add to 5: that's 2 and 3. So (x+2)(x+3)=0 → x=−2 or x=−3."
+  },
+  {
+    q: "Factor: x² − 25",
+    choices: ["(x−5)²", "(x+5)(x−5)", "(x−5)(x−5)", "(x+25)(x−1)"],
+    answer: 1,
+    exp: "x² − 25 is a difference of squares: x² − 5² = (x+5)(x−5)."
+  },
+  {
+    q: "To complete the square on x² + 8x, what number do you add to both sides?",
+    choices: ["4", "8", "16", "64"],
+    answer: 2,
+    exp: "Take half of 8 (which is 4), then square it: 4² = 16. You add 16 to both sides."
+  },
+  {
+    q: "What is the discriminant of 2x² − 4x + 3 = 0?",
+    choices: ["8", "−8", "40", "−8"],
+    answer: 1,
+    exp: "Discriminant Δ = b² − 4ac = (−4)² − 4(2)(3) = 16 − 24 = −8."
+  },
+  {
+    q: "How many real solutions does x² + 2x + 5 = 0 have?",
+    choices: ["Two", "One", "Zero", "Cannot determine"],
+    answer: 2,
+    exp: "Δ = 4 − 20 = −16 < 0. When the discriminant is negative, there are no real solutions."
+  },
+  {
+    q: "Using the quadratic formula, solve x² − 5x + 6 = 0.",
+    choices: ["x = 2 or x = 3", "x = −2 or x = −3", "x = 1 or x = 6", "x = 5 or x = 1"],
+    answer: 0,
+    exp: "a=1, b=−5, c=6. Δ = 25−24 = 1. x = (5±1)/2 → x=3 or x=2."
+  },
+  {
+    q: "For f(x) = x² − 6x + 8, what is the x-coordinate of the vertex?",
+    choices: ["3", "−3", "6", "8"],
+    answer: 0,
+    exp: "x = −b/(2a) = −(−6)/(2·1) = 6/2 = 3."
+  },
+  {
+    q: "A parabola has equation y = −2x² + 4x − 1. Which way does it open?",
+    choices: ["Upward", "Downward", "Left", "Right"],
+    answer: 1,
+    exp: "The coefficient of x² is a = −2, which is negative. When a < 0, the parabola opens downward."
+  }
+];
+
+let current=0, score=0, userAnswers=new Array(questions.length).fill(null);
+
+function render(){
+  const s=document.getElementById('quiz-section'); s.innerHTML='';
+  questions.forEach((q,i)=>{
+    const card=document.createElement('div');
+    card.className='question-card'+(i===0?' active':''); card.id='q'+i;
+    const ans=userAnswers[i]!==null;
+    card.innerHTML=`<section>
+      <p class="q-text"><strong>${i+1}.</strong> ${q.q}</p>
+      <div class="choices">${q.choices.map((c,ci)=>`
+        <button class="choice ${ans?(ci===q.answer?'correct':(ci===userAnswers[i]?'wrong':'')):''}\"
+          onclick="answer(${i},${ci})" ${ans?'disabled':''}>
+          <span style="font-family:'JetBrains Mono',monospace;margin-right:10px;opacity:0.5;">${['A','B','C','D'][ci]}.</span> ${c}
+        </button>`).join('')}</div>
+      <div class="explanation ${ans?'show':''} ${ans?(userAnswers[i]===q.answer?'correct-exp':'wrong-exp'):''}">
+        ${ans?`<strong>${userAnswers[i]===q.answer?'✓ Correct!':'✗ Incorrect.'}</strong> ${q.exp}`:''}
+      </div>
+      <div class="nav-btns">
+        ${i>0?`<button class="btn btn-outline btn-sm" onclick="goTo(${i-1})" style="margin-right:8px;">← Prev</button>`:''}
+        ${ans?(i<questions.length-1?`<button class="btn btn-primary btn-sm" onclick="goTo(${i+1})">Next →</button>`:`<button class="btn btn-accent" onclick="finish()">See Results →</button>`):''}
+      </div></section>`;
+    s.appendChild(card);
+  });
+  updateProgress();
+}
+
+function answer(qi,ci){
+  if(userAnswers[qi]!==null) return;
+  userAnswers[qi]=ci;
+  if(ci===questions[qi].answer) score++;
+  render(); goTo(qi);
+}
+
+function goTo(i){
+  current=i;
+  document.querySelectorAll('.question-card').forEach((c,idx)=>c.classList.toggle('active',idx===i));
+  updateProgress();
+}
+
+function updateProgress(){
+  const answered=userAnswers.filter(a=>a!==null).length;
+  document.getElementById('progress').style.width=(answered/questions.length*100)+'%';
+  document.getElementById('qcounter').textContent=`Question ${current+1} of ${questions.length} · ${answered} answered`;
+}
+
+function finish(){
+  document.getElementById('quiz-section').style.display='none';
+  document.getElementById('progress').style.width='100%';
+  document.getElementById('qcounter').textContent='Quiz Complete!';
+  const results=document.getElementById('results'); results.classList.add('show');
+  const pct=score/questions.length;
+  const ring=document.getElementById('scoreRing');
+  let msg,detail;
+  if(pct>=0.9){ring.className='score-ring score-A';msg='Excellent work!';detail='Outstanding. You\'re ready for Unit 3!';}
+  else if(pct>=0.7){ring.className='score-ring score-B';msg='Good job!';detail='Solid understanding. Review any mistakes and move on.';}
+  else if(pct>=0.5){ring.className='score-ring score-C';msg='Getting there!';detail='Revisit the lessons on completing the square and the quadratic formula.';}
+  else{ring.className='score-ring score-D';msg='Keep practising!';detail='Review Unit 2 lessons before moving forward.';}
+  document.getElementById('scoreFrac').textContent=`${score}/${questions.length}`;
+  document.getElementById('scoreMsg').textContent=msg;
+  document.getElementById('scoreDetail').textContent=detail;
+  document.getElementById('breakdown').innerHTML='<h2 style="margin-bottom:16px;">Review</h2>'+
+    questions.map((q,i)=>{const c=userAnswers[i]===q.answer;return`<div class="result-item">
+      <div class="result-icon">${c?'✅':'❌'}</div>
+      <div><div class="result-q">${q.q}</div>
+      <div class="result-a">${c?'Correct: ':'Your answer: '}<em>${q.choices[userAnswers[i]]}</em>${!c?` · Correct: <em>${q.choices[q.answer]}</em>`:''}</div></div></div>`;}).join('');
+}
+
+function restart(){
+  current=0;score=0;userAnswers=new Array(questions.length).fill(null);
+  document.getElementById('quiz-section').style.display='';
+  document.getElementById('results').classList.remove('show');
+  render();goTo(0);
+}
+
+render();
+</script>
+</body>
+</html>

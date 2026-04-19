@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1 Quiz: Functions — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz-header {
+      text-align: center;
+      padding: 40px 20px 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .q-counter {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .progress-wrap {
+      background: var(--border);
+      border-radius: 99px;
+      height: 5px;
+      margin: 16px auto;
+      max-width: 400px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .question-card {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .question-card.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+    .q-text {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .choices { display: flex; flex-direction: column; gap: 10px; }
+    .choice {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 14px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--paper);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      transition: all 0.15s;
+    }
+    .choice:hover:not(:disabled) { border-color: var(--ink); background: var(--paper-warm); color: var(--ink); }
+    .choice.correct { background: #e8faf1; border-color: var(--accent-green); color: #1a7a45; font-weight: 600; }
+    .choice.wrong { background: #fdf0f0; border-color: var(--accent); color: var(--accent); }
+    .choice:disabled { cursor: default; }
+
+    .explanation {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      display: none;
+    }
+    .explanation.show { display: block; }
+    .explanation.correct-exp { background: #e8faf1; color: #1a7a45; border: 1px solid #a8e6c1; }
+    .explanation.wrong-exp { background: #fdf0f0; color: #8b1a1a; border: 1px solid #f0a0a0; }
+
+    .nav-btns { margin-top: 24px; display: flex; justify-content: flex-end; }
+
+    /* Results */
+    #results { display: none; text-align: center; padding: 20px 0; }
+    #results.show { display: block; }
+    .score-ring {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Lora', serif;
+    }
+    .score-ring .big { font-size: 2.8rem; font-weight: 700; line-height: 1; }
+    .score-ring .small { font-size: 0.85rem; color: inherit; opacity: 0.7; }
+    .score-A { background: #e8faf1; border: 4px solid #27ae60; color: #1a7a45; }
+    .score-B { background: #f0f6ff; border: 4px solid #2980b9; color: #1a5a80; }
+    .score-C { background: #fffbf0; border: 4px solid #e67e22; color: #8b4a00; }
+    .score-D { background: #fdf0f0; border: 4px solid #c0392b; color: #8b1a1a; }
+
+    .results-breakdown { text-align: left; margin-top: 28px; }
+    .result-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .result-item:last-child { border-bottom: none; }
+    .result-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .result-q { color: var(--ink); font-weight: 500; }
+    .result-a { color: var(--ink-faint); font-size: 0.82rem; margin-top: 3px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html" class="active">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container" style="max-width: 680px;">
+
+  <div class="quiz-header">
+    <div class="breadcrumb" style="justify-content:center;">
+      <a href="unit1-functions.html">Unit 1: Functions</a> <span>›</span> <span>Quiz</span>
+    </div>
+    <span class="tag tag-red" style="margin: 10px auto; display:inline-block;">Unit 1 Checkpoint</span>
+    <h1 style="font-size:1.9rem;">Functions Quiz</h1>
+    <p style="color:var(--ink-faint); font-size:0.9rem;">10 questions · No time limit · Instant feedback</p>
+    <div class="progress-wrap"><div class="progress-fill" id="progress"></div></div>
+    <div class="q-counter" id="qcounter">Question 1 of 10</div>
+  </div>
+
+  <section id="quiz-section">
+    <!-- Questions injected by JS -->
+  </section>
+
+  <section id="results">
+    <div class="score-ring" id="scoreRing">
+      <div class="big" id="scoreFrac"></div>
+      <div class="small">correct</div>
+    </div>
+    <h2 id="scoreMsg" style="font-size:1.5rem; margin-bottom:8px;"></h2>
+    <p id="scoreDetail" style="color:var(--ink-faint); margin-bottom:0;"></p>
+
+    <div class="results-breakdown" id="breakdown"></div>
+
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:32px; flex-wrap:wrap;">
+      <button onclick="restart()" class="btn btn-accent">Retake Quiz</button>
+      <a href="practice.html" class="btn btn-outline">More Practice</a>
+      <a href="unit2-quadratics.html" class="btn btn-primary">Next Unit →</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: "Which of the following is NOT a function?",
+    choices: [
+      "{(1,2), (2,4), (3,6)}",
+      "{(1,2), (1,3), (2,4)}",
+      "{(1,2), (2,2), (3,2)}",
+      "{(5,10), (6,12), (7,14)}"
+    ],
+    answer: 1,
+    exp: "Option B is not a function because the input 1 is paired with two different outputs (2 and 3). Each input must have exactly one output."
+  },
+  {
+    q: "Given f(x) = 3x − 5, what is f(4)?",
+    choices: ["7", "12", "17", "−7"],
+    answer: 0,
+    exp: "f(4) = 3(4) − 5 = 12 − 5 = 7. ✓"
+  },
+  {
+    q: "If g(x) = x² + 1, what is g(−3)?",
+    choices: ["−8", "8", "10", "−10"],
+    answer: 2,
+    exp: "g(−3) = (−3)² + 1 = 9 + 1 = 10. Remember: always use brackets around negative inputs, and (−3)² = +9."
+  },
+  {
+    q: "Which best describes the domain of f(x) = 1/(x − 4)?",
+    choices: [
+      "All real numbers",
+      "All real numbers except x = 4",
+      "All real numbers except x = −4",
+      "x > 4"
+    ],
+    answer: 1,
+    exp: "The denominator (x − 4) cannot equal zero, so x ≠ 4. The domain is all reals except x = 4."
+  },
+  {
+    q: "What is the domain of h(x) = √(x − 3)?",
+    choices: ["x > 3", "x ≥ 3", "x < 3", "All real numbers"],
+    answer: 1,
+    exp: "The expression inside the square root must be ≥ 0: x − 3 ≥ 0 → x ≥ 3. Note: x = 3 is included because √0 = 0 is defined."
+  },
+  {
+    q: "If f(x) = 2x + 1, what is f(a + 3)?",
+    choices: ["2a + 3", "2a + 7", "2a + 4", "a + 7"],
+    answer: 1,
+    exp: "f(a+3) = 2(a+3) + 1 = 2a + 6 + 1 = 2a + 7. Replace every x with (a+3) and expand."
+  },
+  {
+    q: "Let f(x) = x + 4 and g(x) = 2x. What is f(g(3))?",
+    choices: ["10", "14", "11", "13"],
+    answer: 0,
+    exp: "Work inside-out: g(3) = 2(3) = 6. Then f(6) = 6 + 4 = 10."
+  },
+  {
+    q: "Let f(x) = x² and g(x) = x + 1. What is g(f(x))?",
+    choices: ["x² + 1", "(x+1)²", "x² + 2x + 1", "x + 1"],
+    answer: 0,
+    exp: "g(f(x)) = g(x²) = x² + 1. We substitute f(x) = x² into g, giving x² + 1."
+  },
+  {
+    q: "If f(x) = 5x − 3, for what value of x does f(x) = 22?",
+    choices: ["4", "5", "3.8", "25"],
+    answer: 1,
+    exp: "Set 5x − 3 = 22 → 5x = 25 → x = 5. Check: f(5) = 25 − 3 = 22 ✓"
+  },
+  {
+    q: "Which graph represents a function? (Choose the correct description.)",
+    choices: [
+      "A circle",
+      "A parabola opening upward",
+      "A vertical line",
+      "An ellipse"
+    ],
+    answer: 1,
+    exp: "A parabola opening upward passes the vertical line test — each x-value gives exactly one y-value. Circles, ellipses, and vertical lines all fail the vertical line test."
+  }
+];
+
+let current = 0;
+let score = 0;
+let userAnswers = new Array(questions.length).fill(null);
+
+function render() {
+  const section = document.getElementById('quiz-section');
+  section.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card' + (i === 0 ? ' active' : '');
+    card.id = 'q' + i;
+    const answered = userAnswers[i] !== null;
+    card.innerHTML = `
+      <section>
+        <p class="q-text"><strong>${i+1}.</strong> ${q.q}</p>
+        <div class="choices">
+          ${q.choices.map((c, ci) => `
+            <button class="choice ${answered ? (ci === q.answer ? 'correct' : (ci === userAnswers[i] ? 'wrong' : '')) : ''}"
+              onclick="answer(${i}, ${ci})" ${answered ? 'disabled' : ''}>
+              <span style="font-family:'JetBrains Mono',monospace; margin-right:10px; opacity:0.5;">${['A','B','C','D'][ci]}.</span> ${c}
+            </button>
+          `).join('')}
+        </div>
+        <div class="explanation ${answered ? 'show' : ''} ${answered ? (userAnswers[i] === q.answer ? 'correct-exp' : 'wrong-exp') : ''}">
+          ${answered ? `<strong>${userAnswers[i] === q.answer ? '✓ Correct!' : '✗ Incorrect.'}</strong> ${q.exp}` : ''}
+        </div>
+        <div class="nav-btns">
+          ${i > 0 ? `<button class="btn btn-outline btn-sm" onclick="goTo(${i-1})" style="margin-right:8px;">← Prev</button>` : ''}
+          ${answered ? (i < questions.length - 1 ? `<button class="btn btn-primary btn-sm" onclick="goTo(${i+1})">Next →</button>` : `<button class="btn btn-accent" onclick="finish()">See Results →</button>`) : ''}
+        </div>
+      </section>
+    `;
+    section.appendChild(card);
+  });
+  updateProgress();
+}
+
+function answer(qi, ci) {
+  if (userAnswers[qi] !== null) return;
+  userAnswers[qi] = ci;
+  if (ci === questions[qi].answer) score++;
+  render();
+  goTo(qi);
+}
+
+function goTo(i) {
+  current = i;
+  document.querySelectorAll('.question-card').forEach((c,idx) => {
+    c.classList.toggle('active', idx === i);
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = userAnswers.filter(a => a !== null).length;
+  document.getElementById('progress').style.width = (answered / questions.length * 100) + '%';
+  document.getElementById('qcounter').textContent = `Question ${current+1} of ${questions.length} · ${answered} answered`;
+}
+
+function finish() {
+  document.getElementById('quiz-section').style.display = 'none';
+  document.getElementById('progress').style.width = '100%';
+  document.getElementById('qcounter').textContent = 'Quiz Complete!';
+  const results = document.getElementById('results');
+  results.classList.add('show');
+
+  const pct = score / questions.length;
+  const ring = document.getElementById('scoreRing');
+  let grade, msg, detail;
+  if (pct >= 0.9) { ring.className = 'score-ring score-A'; grade='A'; msg = 'Excellent work!'; detail='You have a strong grasp of functions. Move on to Unit 2!'; }
+  else if (pct >= 0.7) { ring.className = 'score-ring score-B'; grade='B'; msg = 'Good job!'; detail='You understand the core concepts. Review any mistakes and try again if you like.'; }
+  else if (pct >= 0.5) { ring.className = 'score-ring score-C'; grade='C'; msg = 'Getting there!'; detail='Some concepts need more practice. Revisit the lessons before moving on.'; }
+  else { ring.className = 'score-ring score-D'; grade='D'; msg = 'Keep practising!'; detail='Don\'t worry — revisit the Unit 1 lessons and try again.'; }
+
+  document.getElementById('scoreFrac').textContent = `${score}/${questions.length}`;
+  document.getElementById('scoreMsg').textContent = msg;
+  document.getElementById('scoreDetail').textContent = detail;
+
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = '<h2 style="margin-bottom:16px;">Review</h2>' +
+    questions.map((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      return `<div class="result-item">
+        <div class="result-icon">${correct ? '✅' : '❌'}</div>
+        <div>
+          <div class="result-q">${q.q}</div>
+          <div class="result-a">${correct ? 'Correct: ' : 'Your answer: '}<em>${q.choices[userAnswers[i]]}</em>${!correct ? ` · Correct: <em>${q.choices[q.answer]}</em>` : ''}</div>
+        </div>
+      </div>`;
+    }).join('');
+}
+
+function restart() {
+  current = 0; score = 0;
+  userAnswers = new Array(questions.length).fill(null);
+  document.getElementById('quiz-section').style.display = '';
+  document.getElementById('results').classList.remove('show');
+  render(); goTo(0);
+}
+
+render();
+</script>
+</body>
+</html>
