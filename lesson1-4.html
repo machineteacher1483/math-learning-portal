@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1-4: Function Notation — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html" class="active">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span>
+      <a href="unit1-functions.html">Unit 1: Functions</a> <span>›</span>
+      <span>Lesson 4</span>
+    </div>
+    <span class="tag tag-red">Lesson 4 of 5</span>
+    <h1>Function Notation</h1>
+    <p class="lead">Function notation is the language mathematicians use to talk about functions precisely. Once you're fluent in it, reading and writing math becomes much faster.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>Reading Function Notation</h2>
+    <p>The expression <span class="math-inline">f(x) = 3x − 1</span> tells you three things at once:</p>
+    <div class="math-block">
+      f     →  the name of the function<br>
+      (x)   →  x is the input variable<br>
+      3x−1  →  the rule: "multiply input by 3, then subtract 1"
+    </div>
+    <p style="margin-top:12px;">Different letters name different functions: <span class="math-inline">f</span>, <span class="math-inline">g</span>, <span class="math-inline">h</span>, <span class="math-inline">p</span>, <span class="math-inline">q</span>... even <span class="math-inline">A(r)</span> (area as a function of radius) is perfectly valid notation.</p>
+  </section>
+
+  <section>
+    <h3>Interpreting Notation</h3>
+    <h2>What Do These Mean?</h2>
+    <p>Given <span class="math-inline">f(x) = x² + 4</span>, let's interpret several expressions:</p>
+    <div class="math-block">
+      f(0)      →  "f of 0" = (0)² + 4 = 4<br>
+      f(a)      →  "f of a" = a² + 4<br>
+      f(x+1)    →  "f of (x+1)" = (x+1)² + 4 = x² + 2x + 5<br>
+      f(2t)     →  "f of 2t" = (2t)² + 4 = 4t² + 4<br>
+      2·f(x)    →  2 times f(x) = 2(x² + 4) = 2x² + 8
+    </div>
+    <p style="margin-top:12px;">Notice the difference between <span class="math-inline">f(2t)</span> (input is 2t) and <span class="math-inline">2·f(t)</span> (2 times the output of f at t).</p>
+  </section>
+
+  <section>
+    <h3>Real-World Notation</h3>
+    <h2>Meaningful Function Names</h2>
+    <p>Functions don't have to be called <span class="math-inline">f</span>. Descriptive names make math more readable:</p>
+    <div class="math-block">
+      C(n) = 5n + 20    (Cost in dollars for n items)<br>
+      A(r) = πr²        (Area of circle with radius r)<br>
+      H(t) = −5t² + 20t (Height in metres at time t seconds)
+    </div>
+    <p style="margin-top:12px;">Then <span class="math-inline">H(3)</span> means "the height at time t = 3 seconds."</p>
+  </section>
+
+  <section>
+    <h3>Example</h3>
+    <h2>Solving for x Given f(x)</h2>
+    <p>Given <span class="math-inline">f(x) = 4x − 7</span>, find x when <span class="math-inline">f(x) = 9</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Set the function equal to 9:</div>
+      <div class="step"><span class="step-num">2.</span> 4x − 7 = 9</div>
+      <div class="step"><span class="step-num">3.</span> 4x = 16</div>
+      <div class="step"><span class="step-num">4.</span> x = <strong>4</strong></div>
+    </div>
+    <p style="margin-top:12px;">Check: <span class="math-inline">f(4) = 4(4) − 7 = 16 − 7 = 9 ✓</span></p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Reading <span class="math-inline">f(x)</span> as "f times x" — it means "f of x"</li>
+      <li class="bad">Confusing <span class="math-inline">f(2x)</span> (substitute 2x) with <span class="math-inline">2f(x)</span> (multiply output by 2)</li>
+      <li class="bad">Confusing <span class="math-inline">f(x+1)</span> with <span class="math-inline">f(x)+1</span> — these give different results!</li>
+      <li class="ok">Parentheses in function notation mean INPUT, not multiplication</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p>Let <span class="math-inline">f(x) = 3x + 2</span> and <span class="math-inline">g(x) = x²</span>.</p>
+
+    <p style="margin-top:12px;"><strong>Q1.</strong> Find <span class="math-inline">f(x + 2)</span>.</p>
+    <details style="margin-top:8px; margin-bottom:16px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">f(x+2) = 3(x+2) + 2 = 3x + 6 + 2 = <strong>3x + 8</strong></div>
+    </details>
+
+    <p><strong>Q2.</strong> Find <span class="math-inline">2·g(x)</span> vs. <span class="math-inline">g(2x)</span>. Are they different?</p>
+    <details style="margin-top:8px; margin-bottom:16px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        2·g(x) = 2·x² = <strong>2x²</strong><br>
+        g(2x) = (2x)² = <strong>4x²</strong><br>
+        Yes — they are different!
+      </div>
+    </details>
+
+    <p><strong>Q3.</strong> If <span class="math-inline">f(x) = 6x − 3</span>, find x when <span class="math-inline">f(x) = 15</span>.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        6x − 3 = 15 → 6x = 18 → <strong>x = 3</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok"><span class="math-inline">f(x)</span> = "f of x" — f is the name, x is the input</li>
+      <li class="ok">To evaluate, replace x with whatever is in the parentheses</li>
+      <li class="ok"><span class="math-inline">f(2x) ≠ 2f(x)</span> — always check what the input is</li>
+      <li class="ok">To solve for x: set the rule equal to the given output, then solve</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson1-3.html" class="btn btn-outline">← Lesson 3: Domain and Range</a>
+    <a href="lesson1-5.html" class="btn btn-primary">Next: Composition of Functions →</a>
+  </div>
+
+</div>
+</body>
+</html>

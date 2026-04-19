@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2-3: Completing the Square — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html" class="active">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="unit2-quadratics.html">Unit 2</a> <span>›</span> <span>Lesson 3</span></div>
+    <span class="tag tag-blue">Lesson 3 of 5</span>
+    <h1>Completing the Square</h1>
+    <p class="lead">Completing the square is a technique for rewriting a quadratic in vertex form. It always works — even when factoring fails.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>Vertex Form</h2>
+    <p>We want to rewrite <span class="math-inline">ax² + bx + c</span> as <span class="math-inline">a(x − h)² + k</span>. This is called <strong>vertex form</strong>, and it reveals the vertex of the parabola at <span class="math-inline">(h, k)</span>.</p>
+  </section>
+
+  <section>
+    <h3>Method (a = 1)</h3>
+    <h2>Step-by-Step: Completing the Square</h2>
+    <p><strong>Solve</strong> <span class="math-inline">x² + 6x + 5 = 0</span> by completing the square.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Move constant: x² + 6x = −5</div>
+      <div class="step"><span class="step-num">2.</span> Take half of b, then square it: (6/2)² = 9</div>
+      <div class="step"><span class="step-num">3.</span> Add 9 to BOTH sides: x² + 6x + 9 = −5 + 9</div>
+      <div class="step"><span class="step-num">4.</span> Left side is now a perfect square: (x + 3)² = 4</div>
+      <div class="step"><span class="step-num">5.</span> Take square root: x + 3 = ±2</div>
+      <div class="step"><span class="step-num">6.</span> x = −3 + 2 = −1  or  x = −3 − 2 = −5</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Example 2</h3>
+    <h2>Rewriting in Vertex Form</h2>
+    <p>Rewrite <span class="math-inline">f(x) = x² − 4x + 7</span> in vertex form.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Group x terms: f(x) = (x² − 4x) + 7</div>
+      <div class="step"><span class="step-num">2.</span> Half of −4 is −2; (−2)² = 4</div>
+      <div class="step"><span class="step-num">3.</span> Add and subtract 4 inside: (x² − 4x + 4) − 4 + 7</div>
+      <div class="step"><span class="step-num">4.</span> f(x) = (x − 2)² + 3</div>
+    </div>
+    <p style="margin-top:12px;"><strong>Vertex:</strong> (2, 3). The parabola has its minimum at x = 2, y = 3.</p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Forgetting to add the same value to BOTH sides</li>
+      <li class="bad">Forgetting the ± when taking the square root</li>
+      <li class="bad">Using the full value of b instead of b/2 when squaring</li>
+      <li class="ok">The number you add is always (b/2)²</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p><strong>Q:</strong> Solve <span class="math-inline">x² − 8x + 7 = 0</span> by completing the square.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        x² − 8x = −7<br>
+        Add (−8/2)² = 16: x² − 8x + 16 = 9<br>
+        (x − 4)² = 9<br>
+        x − 4 = ±3<br>
+        <strong>x = 7  or  x = 1</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok">Move constant to right side</li>
+      <li class="ok">Add (b/2)² to both sides</li>
+      <li class="ok">Factor as a perfect square</li>
+      <li class="ok">Take ± square root and solve</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson2-2.html" class="btn btn-outline">← Lesson 2: Factoring</a>
+    <a href="lesson2-4.html" class="btn btn-primary">Next: The Quadratic Formula →</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2-5: Graphing Parabolas — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html" class="active">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="unit2-quadratics.html">Unit 2</a> <span>›</span> <span>Lesson 5</span></div>
+    <span class="tag tag-blue">Lesson 5 of 5</span>
+    <h1>Graphing Parabolas</h1>
+    <p class="lead">Visualising quadratics as parabolas connects the algebra to geometry. Learn to quickly sketch any parabola from its equation.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>Key Features of a Parabola</h2>
+    <ul>
+      <li><strong>Vertex</strong> — the turning point: either a minimum (a > 0) or maximum (a < 0)</li>
+      <li><strong>Axis of Symmetry</strong> — the vertical line through the vertex: <span class="math-inline">x = −b/(2a)</span></li>
+      <li><strong>y-intercept</strong> — where the graph hits the y-axis: <span class="math-inline">(0, c)</span></li>
+      <li><strong>x-intercepts (roots)</strong> — where the graph hits the x-axis: solve <span class="math-inline">ax²+bx+c=0</span></li>
+      <li><strong>Opens up/down</strong> — upward if a > 0; downward if a < 0</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Example</h3>
+    <h2>Sketch f(x) = x² − 4x + 3</h2>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Direction: a = 1 > 0 → opens upward (∪ shape)</div>
+      <div class="step"><span class="step-num">2.</span> Axis of symmetry: x = −(−4)/(2·1) = 4/2 = 2</div>
+      <div class="step"><span class="step-num">3.</span> Vertex: f(2) = 4 − 8 + 3 = −1  → vertex: (2, −1)</div>
+      <div class="step"><span class="step-num">4.</span> y-intercept: c = 3  → point (0, 3)</div>
+      <div class="step"><span class="step-num">5.</span> x-intercepts: x² − 4x + 3 = 0 → (x−1)(x−3) = 0 → x=1, x=3</div>
+    </div>
+
+    <div style="background:var(--paper-warm); border:1px solid var(--border); border-radius:6px; padding:20px; margin:20px 0;">
+      <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:340px; display:block; margin:0 auto;">
+        <!-- Grid -->
+        <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0ddd6" stroke-width="0.5"/></pattern></defs>
+        <rect width="340" height="280" fill="url(#grid)"/>
+        <!-- Axes -->
+        <line x1="20" y1="180" x2="320" y2="180" stroke="#b0aaa0" stroke-width="1.5"/>
+        <line x1="90" y1="20" x2="90" y2="270" stroke="#b0aaa0" stroke-width="1.5"/>
+        <!-- Axis labels -->
+        <text x="325" y="184" font-family="JetBrains Mono,monospace" font-size="11" fill="#b0aaa0">x</text>
+        <text x="93" y="16" font-family="JetBrains Mono,monospace" font-size="11" fill="#b0aaa0">y</text>
+        <!-- Tick marks x-axis: each unit = 40px, origin at x=90, y=180 -->
+        <text x="87" y="195" font-family="JetBrains Mono,monospace" font-size="9" fill="#b0aaa0" text-anchor="middle">0</text>
+        <text x="127" y="195" font-family="JetBrains Mono,monospace" font-size="9" fill="#b0aaa0" text-anchor="middle">1</text>
+        <text x="167" y="195" font-family="JetBrains Mono,monospace" font-size="9" fill="#b0aaa0" text-anchor="middle">2</text>
+        <text x="207" y="195" font-family="JetBrains Mono,monospace" font-size="9" fill="#b0aaa0" text-anchor="middle">3</text>
+        <text x="247" y="195" font-family="JetBrains Mono,monospace" font-size="9" fill="#b0aaa0" text-anchor="middle">4</text>
+        <!-- Parabola: f(x)=x²-4x+3, vertex at (2,-1). Map: px = 90 + 40*x, py = 180 - 40*y -->
+        <!-- Points: x=0,y=3 → (90,60); x=1,y=0 → (130,180); x=2,y=-1 → (170,220); x=3,y=0 → (210,180); x=4,y=3 → (250,60) -->
+        <path d="M 30,20 Q 90,60 130,180 Q 170,260 210,180 Q 250,60 310,20" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+        <!-- Key points -->
+        <circle cx="130" cy="180" r="5" fill="#27ae60"/> <!-- x=1 -->
+        <circle cx="210" cy="180" r="5" fill="#27ae60"/> <!-- x=3 -->
+        <circle cx="170" cy="220" r="5" fill="#c0392b"/> <!-- vertex -->
+        <circle cx="90" cy="60" r="5" fill="#2980b9"/> <!-- y-intercept -->
+        <!-- Labels -->
+        <text x="120" y="170" font-family="DM Sans,sans-serif" font-size="10" fill="#27ae60">(1,0)</text>
+        <text x="212" y="170" font-family="DM Sans,sans-serif" font-size="10" fill="#27ae60">(3,0)</text>
+        <text x="174" y="234" font-family="DM Sans,sans-serif" font-size="10" fill="#c0392b">(2,−1)</text>
+        <text x="94" y="55" font-family="DM Sans,sans-serif" font-size="10" fill="#2980b9">(0,3)</text>
+        <!-- Axis of symmetry -->
+        <line x1="170" y1="30" x2="170" y2="260" stroke="#c0392b" stroke-width="1" stroke-dasharray="5,4" opacity="0.5"/>
+        <text x="172" y="28" font-family="DM Sans,sans-serif" font-size="9" fill="#c0392b">x=2</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h3>Quick Method</h3>
+    <h2>Sketching From Vertex Form</h2>
+    <p>If you already have vertex form <span class="math-inline">f(x) = a(x−h)² + k</span>, sketching is immediate:</p>
+    <ul>
+      <li>Vertex: <span class="math-inline">(h, k)</span></li>
+      <li>Axis of symmetry: <span class="math-inline">x = h</span></li>
+      <li>Opens up if a > 0, down if a < 0</li>
+      <li>Wider if |a| < 1, narrower if |a| > 1</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p><strong>Q:</strong> For <span class="math-inline">f(x) = x² + 2x − 8</span>, find: (a) the vertex, (b) axis of symmetry, (c) x-intercepts.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        (a) Axis: x = −2/(2·1) = −1. Vertex: f(−1) = 1 − 2 − 8 = −9 → <strong>(−1, −9)</strong><br>
+        (b) Axis of symmetry: <strong>x = −1</strong><br>
+        (c) x² + 2x − 8 = 0 → (x+4)(x−2) = 0 → <strong>x = −4 or x = 2</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok">Vertex x-coordinate: <span class="math-inline">x = −b/(2a)</span></li>
+      <li class="ok">a > 0 → ∪ shape (minimum); a < 0 → ∩ shape (maximum)</li>
+      <li class="ok">y-intercept is always at (0, c)</li>
+      <li class="ok">x-intercepts: solve the quadratic = 0</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson2-4.html" class="btn btn-outline">← Lesson 4: Quadratic Formula</a>
+    <a href="quiz2.html" class="btn btn-accent">Take the Unit 2 Quiz →</a>
+  </div>
+</div>
+</body>
+</html>

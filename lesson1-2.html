@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1-2: Evaluating Functions — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html" class="active">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span>
+      <a href="unit1-functions.html">Unit 1: Functions</a> <span>›</span>
+      <span>Lesson 2</span>
+    </div>
+    <span class="tag tag-red">Lesson 2 of 5</span>
+    <h1>Evaluating Functions</h1>
+    <p class="lead">Evaluating a function means finding its output for a given input. It's the most common thing you'll do with functions, so let's make sure you can do it confidently.</p>
+  </div>
+
+  <section class="section-warn">
+    <h3>Before You Start</h3>
+    <h2>Prerequisites</h2>
+    <p>Make sure you understand what a function is (Lesson 1-1), and that you're comfortable substituting values into algebraic expressions.</p>
+  </section>
+
+  <section>
+    <h3>Objectives</h3>
+    <h2>What You'll Learn</h2>
+    <ul>
+      <li>How to evaluate <span class="math-inline">f(a)</span> for any value of <span class="math-inline">a</span></li>
+      <li>How to handle negative inputs, expressions, and variables as inputs</li>
+      <li>How to evaluate functions defined by tables or graphs</li>
+    </ul>
+  </section>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>What "Evaluate" Means</h2>
+    <p>When you see <span class="math-inline">f(3)</span>, it means: <em>"plug 3 in wherever you see x."</em> Every <span class="math-inline">x</span> gets replaced by 3, and then you simplify.</p>
+    <div class="math-block">
+      f(x) = 2x + 3<br><br>
+      f(3) = 2(3) + 3 = 6 + 3 = <strong>9</strong>
+    </div>
+    <p>That's it. The notation <span class="math-inline">f(3)</span> does NOT mean "f times 3." The number in parentheses is the input, not a multiplication.</p>
+  </section>
+
+  <!-- Example 1 -->
+  <section>
+    <h3>Example 1</h3>
+    <h2>Simple Substitution</h2>
+    <p>Let <span class="math-inline">f(x) = x² + 2x − 1</span>. Find <span class="math-inline">f(4)</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> f(x) = x² + 2x − 1</div>
+      <div class="step"><span class="step-num">2.</span> f(4) = (4)² + 2(4) − 1</div>
+      <div class="step"><span class="step-num">3.</span>       = 16 + 8 − 1</div>
+      <div class="step"><span class="step-num">4.</span>       = <strong>23</strong></div>
+    </div>
+  </section>
+
+  <!-- Example 2: Negative input -->
+  <section>
+    <h3>Example 2</h3>
+    <h2>Negative Input — Be Careful!</h2>
+    <p>Let <span class="math-inline">g(x) = x² − 3x</span>. Find <span class="math-inline">g(−2)</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> g(x) = x² − 3x</div>
+      <div class="step"><span class="step-num">2.</span> g(−2) = (−2)² − 3(−2)</div>
+      <div class="step"><span class="step-num">3.</span>        = 4 − (−6)</div>
+      <div class="step"><span class="step-num">4.</span>        = 4 + 6 = <strong>10</strong></div>
+    </div>
+    <p style="margin-top:12px;"><em>Key point:</em> Always use brackets around your substituted value: <span class="math-inline">(−2)²</span> = 4, but <span class="math-inline">−2²</span> = −4. These are different!</p>
+  </section>
+
+  <!-- Example 3: Expression as input -->
+  <section>
+    <h3>Example 3</h3>
+    <h2>An Expression as Input</h2>
+    <p>Let <span class="math-inline">h(x) = 3x − 2</span>. Find <span class="math-inline">h(a + 1)</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> h(x) = 3x − 2</div>
+      <div class="step"><span class="step-num">2.</span> Replace every x with (a + 1):</div>
+      <div class="step"><span class="step-num">3.</span> h(a+1) = 3(a + 1) − 2</div>
+      <div class="step"><span class="step-num">4.</span>         = 3a + 3 − 2</div>
+      <div class="step"><span class="step-num">5.</span>         = <strong>3a + 1</strong></div>
+    </div>
+    <p style="margin-top:12px;">This is a powerful skill — evaluating at an expression, not just a number. The process is identical: replace every x and simplify.</p>
+  </section>
+
+  <!-- Table evaluation -->
+  <section>
+    <h3>Example 4</h3>
+    <h2>Evaluating From a Table</h2>
+    <p>Sometimes a function is given as a table instead of a formula. Here's how to read it:</p>
+
+    <table style="border-collapse:collapse; width:100%; margin:16px 0; font-size:0.95rem;">
+      <thead>
+        <tr style="background:var(--paper-warm);">
+          <th style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">x</th>
+          <th style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">f(x)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">−2</td><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">5</td></tr>
+        <tr style="background:var(--paper-warm);"><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">0</td><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">1</td></tr>
+        <tr><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">3</td><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">7</td></tr>
+        <tr style="background:var(--paper-warm);"><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">5</td><td style="padding:10px 16px; text-align:center; border:1px solid var(--border); font-family:'JetBrains Mono',monospace;">13</td></tr>
+      </tbody>
+    </table>
+
+    <p><span class="math-inline">f(3) = 7</span> — just read across the row where x = 3.</p>
+    <p><span class="math-inline">f(0) = 1</span> — find x = 0, read the f(x) value.</p>
+    <p>To find x when <span class="math-inline">f(x) = 13</span>: look in the f(x) column for 13, then read the x value → <span class="math-inline">x = 5</span>.</p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Writing <span class="math-inline">f(3) = f × 3</span> — the parentheses mean "input," not multiplication!</li>
+      <li class="bad">Forgetting brackets on negative numbers: <span class="math-inline">f(−2)</span> should give <span class="math-inline">(−2)²</span>, not <span class="math-inline">−2²</span></li>
+      <li class="bad">Only replacing some x's — you must replace EVERY x in the expression</li>
+      <li class="ok">Always use brackets around your substituted value, especially for negative numbers</li>
+      <li class="ok">Replace ALL instances of x before you simplify</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+
+    <p><strong>Q1.</strong> Given <span class="math-inline">f(x) = 5x − 2</span>, find <span class="math-inline">f(6)</span>.</p>
+    <details style="margin-top:8px; margin-bottom:20px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        f(6) = 5(6) − 2 = 30 − 2 = <strong>28</strong>
+      </div>
+    </details>
+
+    <p><strong>Q2.</strong> Given <span class="math-inline">g(x) = x² − 4</span>, find <span class="math-inline">g(−3)</span>.</p>
+    <details style="margin-top:8px; margin-bottom:20px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        g(−3) = (−3)² − 4 = 9 − 4 = <strong>5</strong>
+      </div>
+    </details>
+
+    <p><strong>Q3.</strong> Given <span class="math-inline">h(x) = 2x + 1</span>, find <span class="math-inline">h(x + 3)</span>.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        h(x+3) = 2(x+3) + 1 = 2x + 6 + 1 = <strong>2x + 7</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok">To evaluate <span class="math-inline">f(a)</span>: replace every <span class="math-inline">x</span> with <span class="math-inline">a</span>, then simplify</li>
+      <li class="ok">Always use brackets around your substituted value</li>
+      <li class="ok">The input can be a number, a negative number, or even an expression like <span class="math-inline">x + 1</span></li>
+      <li class="ok">Functions can also be given as tables — just read the matching row</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson1-1.html" class="btn btn-outline">← Lesson 1: What is a Function?</a>
+    <a href="lesson1-3.html" class="btn btn-primary">Next: Domain and Range →</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2-4: The Quadratic Formula — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html">Functions</a>
+  <a href="unit2-quadratics.html" class="active">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="unit2-quadratics.html">Unit 2</a> <span>›</span> <span>Lesson 4</span></div>
+    <span class="tag tag-blue">Lesson 4 of 5</span>
+    <h1>The Quadratic Formula</h1>
+    <p class="lead">The quadratic formula is the universal solution to any quadratic equation. Memorise it, and you'll never be stuck on a quadratic again.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>The Formula</h3>
+    <h2>Quadratic Formula</h2>
+    <p>For any equation <span class="math-inline">ax² + bx + c = 0</span>:</p>
+    <div class="math-block" style="font-size:1.15rem; text-align:center; padding:28px;">
+      x = (−b ± √(b² − 4ac)) / (2a)
+    </div>
+    <p>This formula always gives the correct solutions — whether the quadratic factors nicely or not.</p>
+  </section>
+
+  <section>
+    <h3>Example 1</h3>
+    <h2>Using the Formula</h2>
+    <p>Solve <span class="math-inline">2x² − 5x + 2 = 0</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> a = 2, b = −5, c = 2</div>
+      <div class="step"><span class="step-num">2.</span> x = (−(−5) ± √((−5)² − 4(2)(2))) / (2·2)</div>
+      <div class="step"><span class="step-num">3.</span>   = (5 ± √(25 − 16)) / 4</div>
+      <div class="step"><span class="step-num">4.</span>   = (5 ± √9) / 4</div>
+      <div class="step"><span class="step-num">5.</span>   = (5 ± 3) / 4</div>
+      <div class="step"><span class="step-num">6.</span>   x = (5+3)/4 = 2   or   x = (5−3)/4 = 1/2</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>The Discriminant</h3>
+    <h2>b² − 4ac: How Many Solutions?</h2>
+    <p>The expression <span class="math-inline">b² − 4ac</span> is called the <strong>discriminant</strong> (often written Δ). It tells you the number of real solutions <em>before</em> you fully solve.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin:16px 0;">
+      <div style="background:#e8faf1; border:1px solid #a8e6c1; border-radius:6px; padding:16px;">
+        <strong style="color:#1a7a45;">Δ > 0</strong>
+        <p style="font-size:0.85rem; color:#1a7a45; margin-top:6px;">Two distinct real solutions</p>
+      </div>
+      <div style="background:#fff9e6; border:1px solid #f0d060; border-radius:6px; padding:16px;">
+        <strong style="color:#b07800;">Δ = 0</strong>
+        <p style="font-size:0.85rem; color:#b07800; margin-top:6px;">One repeated real solution</p>
+      </div>
+      <div style="background:#fdf0f0; border:1px solid #f0a0a0; border-radius:6px; padding:16px;">
+        <strong style="color:#c0392b;">Δ &lt; 0</strong>
+        <p style="font-size:0.85rem; color:#c0392b; margin-top:6px;">No real solutions</p>
+      </div>
+    </div>
+
+    <p><strong>Example:</strong> For <span class="math-inline">x² + 2x + 5 = 0</span>: Δ = 4 − 20 = −16 < 0 → no real solutions.</p>
+    <p><strong>Example:</strong> For <span class="math-inline">x² − 6x + 9 = 0</span>: Δ = 36 − 36 = 0 → one solution: x = 3.</p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Forgetting the ± — there are usually TWO solutions</li>
+      <li class="bad">Computing b² as (−b)² incorrectly — watch your signs</li>
+      <li class="bad">Dividing only the numerator, not the whole expression, by 2a</li>
+      <li class="ok">Always put the equation in standard form (= 0) before reading a, b, c</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p><strong>Q1.</strong> Solve <span class="math-inline">x² + 4x − 5 = 0</span> using the quadratic formula.</p>
+    <details style="margin-top:8px; margin-bottom:16px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        a=1, b=4, c=−5<br>
+        Δ = 16 + 20 = 36<br>
+        x = (−4 ± 6) / 2<br>
+        <strong>x = 1  or  x = −5</strong>
+      </div>
+    </details>
+
+    <p><strong>Q2.</strong> Without fully solving, how many real solutions does <span class="math-inline">3x² − x + 2 = 0</span> have?</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <p style="margin-top:10px;">Δ = (−1)² − 4(3)(2) = 1 − 24 = −23 < 0. <strong>No real solutions.</strong></p>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok">Formula: <span class="math-inline">x = (−b ± √(b²−4ac)) / 2a</span></li>
+      <li class="ok">Discriminant Δ = b²−4ac: positive = 2 solutions, zero = 1, negative = none</li>
+      <li class="ok">Always put in standard form first</li>
+      <li class="ok">Don't forget the ±</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson2-3.html" class="btn btn-outline">← Lesson 3: Completing the Square</a>
+    <a href="lesson2-5.html" class="btn btn-primary">Next: Graphing Parabolas →</a>
+  </div>
+</div>
+</body>
+</html>

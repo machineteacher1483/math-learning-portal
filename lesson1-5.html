@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1-5: Composition of Functions — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html" class="active">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span>
+      <a href="unit1-functions.html">Unit 1: Functions</a> <span>›</span>
+      <span>Lesson 5</span>
+    </div>
+    <span class="tag tag-red">Lesson 5 of 5</span>
+    <h1>Composition of Functions</h1>
+    <p class="lead">What happens when you feed the output of one function into another? That's composition — and it's a powerful technique used throughout advanced math and computer science.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>What is Composition?</h2>
+    <p>The <strong>composition</strong> of functions f and g, written <span class="math-inline">f(g(x))</span> or <span class="math-inline">(f ∘ g)(x)</span>, means: apply g first, then apply f to the result.</p>
+    <div class="math-block">
+      x → [g] → g(x) → [f] → f(g(x))
+    </div>
+    <p style="margin-top:12px;">Think of it like a two-step machine: input x goes into the first machine (g), and whatever comes out goes into the second machine (f).</p>
+  </section>
+
+  <section>
+    <h3>Example 1</h3>
+    <h2>Evaluating a Composition at a Number</h2>
+    <p>Let <span class="math-inline">f(x) = 2x + 1</span> and <span class="math-inline">g(x) = x²</span>. Find <span class="math-inline">f(g(3))</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Work from the inside out. Find g(3) first:</div>
+      <div class="step"><span class="step-num">2.</span> g(3) = (3)² = 9</div>
+      <div class="step"><span class="step-num">3.</span> Now find f(9):</div>
+      <div class="step"><span class="step-num">4.</span> f(9) = 2(9) + 1 = 19</div>
+      <div class="step"><span class="step-num">5.</span> So f(g(3)) = <strong>19</strong></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Example 2</h3>
+    <h2>Finding the Composite Function f(g(x))</h2>
+    <p>Using the same <span class="math-inline">f(x) = 2x + 1</span> and <span class="math-inline">g(x) = x²</span>, find <span class="math-inline">f(g(x))</span> as a single expression.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> f(g(x)) means: replace x in f with g(x)</div>
+      <div class="step"><span class="step-num">2.</span> f(x) = 2x + 1</div>
+      <div class="step"><span class="step-num">3.</span> f(g(x)) = 2·g(x) + 1</div>
+      <div class="step"><span class="step-num">4.</span>          = 2(x²) + 1</div>
+      <div class="step"><span class="step-num">5.</span>          = <strong>2x² + 1</strong></div>
+    </div>
+    <p style="margin-top:12px;">Verify: using x = 3 gives 2(9) + 1 = 19 ✓</p>
+  </section>
+
+  <section>
+    <h3>Critical Point</h3>
+    <h2>Order Matters!</h2>
+    <p>In general, <span class="math-inline">f(g(x)) ≠ g(f(x))</span>. Composition is NOT commutative.</p>
+    <p>Using the same functions, find <span class="math-inline">g(f(x))</span>:</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> g(f(x)) means: replace x in g with f(x)</div>
+      <div class="step"><span class="step-num">2.</span> g(x) = x²</div>
+      <div class="step"><span class="step-num">3.</span> g(f(x)) = (f(x))²</div>
+      <div class="step"><span class="step-num">4.</span>          = (2x + 1)²</div>
+      <div class="step"><span class="step-num">5.</span>          = <strong>4x² + 4x + 1</strong></div>
+    </div>
+    <p style="margin-top:12px;"><span class="math-inline">f(g(x)) = 2x² + 1</span> but <span class="math-inline">g(f(x)) = 4x² + 4x + 1</span>. They're different!</p>
+  </section>
+
+  <section>
+    <h3>Example 3</h3>
+    <h2>Three-Function Composition</h2>
+    <p>Let <span class="math-inline">f(x) = x + 3</span>, <span class="math-inline">g(x) = 2x</span>, <span class="math-inline">h(x) = x²</span>. Find <span class="math-inline">f(g(h(2)))</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Start innermost: h(2) = (2)² = 4</div>
+      <div class="step"><span class="step-num">2.</span> Next: g(h(2)) = g(4) = 2(4) = 8</div>
+      <div class="step"><span class="step-num">3.</span> Finally: f(g(h(2))) = f(8) = 8 + 3 = <strong>11</strong></div>
+    </div>
+    <p style="margin-top:12px;">Rule: always work <strong>inside-out</strong> when evaluating compositions.</p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Evaluating left-to-right: <span class="math-inline">f(g(x))</span> means apply g FIRST, then f</li>
+      <li class="bad">Assuming <span class="math-inline">f(g(x)) = g(f(x))</span> — order matters!</li>
+      <li class="bad">Forgetting brackets when substituting an expression, e.g., writing <span class="math-inline">2x+1²</span> instead of <span class="math-inline">(2x+1)²</span></li>
+      <li class="ok">Always work inside-out: evaluate the innermost function first</li>
+      <li class="ok">Always use brackets around the entire substituted expression</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+    <p>Let <span class="math-inline">f(x) = x + 5</span> and <span class="math-inline">g(x) = 3x</span>.</p>
+
+    <p style="margin-top:12px;"><strong>Q1.</strong> Find <span class="math-inline">f(g(2))</span>.</p>
+    <details style="margin-top:8px; margin-bottom:16px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        g(2) = 3(2) = 6<br>
+        f(g(2)) = f(6) = 6 + 5 = <strong>11</strong>
+      </div>
+    </details>
+
+    <p><strong>Q2.</strong> Find <span class="math-inline">g(f(x))</span> as a simplified expression.</p>
+    <details style="margin-top:8px; margin-bottom:16px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        g(f(x)) = 3·f(x) = 3(x + 5) = <strong>3x + 15</strong>
+      </div>
+    </details>
+
+    <p><strong>Q3.</strong> Find <span class="math-inline">f(g(x))</span>. Is it the same as g(f(x))?</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <div class="math-block" style="margin-top:10px;">
+        f(g(x)) = f(3x) = 3x + 5<br>
+        g(f(x)) = 3x + 15<br>
+        <strong>No, they are different!</strong>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok"><span class="math-inline">f(g(x))</span> = apply g first, then f</li>
+      <li class="ok">Always work inside-out when evaluating numerically</li>
+      <li class="ok">Order matters: <span class="math-inline">f(g(x))</span> and <span class="math-inline">g(f(x))</span> usually give different results</li>
+      <li class="ok">To find the composite function, substitute the entire second function in place of x in the first</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson1-4.html" class="btn btn-outline">← Lesson 4: Function Notation</a>
+    <a href="quiz1.html" class="btn btn-accent">Take the Unit 1 Quiz →</a>
+  </div>
+
+</div>
+</body>
+</html>

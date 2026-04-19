@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1-3: Domain and Range — MathPath</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Math<span>Path</span></a>
+  <a href="index.html">Home</a>
+  <a href="unit1-functions.html" class="active">Functions</a>
+  <a href="unit2-quadratics.html">Quadratics</a>
+  <a href="unit3-linear.html">Linear</a>
+  <a href="practice.html">Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>›</span>
+      <a href="unit1-functions.html">Unit 1: Functions</a> <span>›</span>
+      <span>Lesson 3</span>
+    </div>
+    <span class="tag tag-red">Lesson 3 of 5</span>
+    <h1>Domain and Range</h1>
+    <p class="lead">Domain and range tell you what inputs a function will accept and what outputs it can produce. Understanding them prevents a lot of algebraic disasters.</p>
+  </div>
+
+  <section class="section-accent">
+    <h3>Core Concept</h3>
+    <h2>Domain vs. Range</h2>
+    <ul>
+      <li><strong>Domain:</strong> the set of all possible <em>inputs</em> (x-values) for a function</li>
+      <li><strong>Range:</strong> the set of all possible <em>outputs</em> (y-values / f(x)-values) that the function can produce</li>
+    </ul>
+    <div class="math-block" style="margin-top:16px;">
+      Domain → [Function] → Range<br>
+      (inputs)              (outputs)
+    </div>
+  </section>
+
+  <section>
+    <h3>Finding Domain</h3>
+    <h2>What Restricts the Domain?</h2>
+    <p>For most functions, the domain is "all real numbers." But two situations create restrictions:</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+      <div style="background:var(--paper-warm); border:1px solid var(--border); border-radius:6px; padding:18px;">
+        <strong>1. Division by Zero</strong>
+        <p style="margin-top:8px; font-size:0.9rem;">Any value of x that makes the denominator = 0 must be excluded.</p>
+        <div class="math-block" style="margin-top:10px; font-size:0.9rem;">
+          f(x) = 1/(x − 3)<br>
+          x ≠ 3
+        </div>
+      </div>
+      <div style="background:var(--paper-warm); border:1px solid var(--border); border-radius:6px; padding:18px;">
+        <strong>2. Even Roots of Negatives</strong>
+        <p style="margin-top:8px; font-size:0.9rem;">You can't take a square root (or 4th root, etc.) of a negative number.</p>
+        <div class="math-block" style="margin-top:10px; font-size:0.9rem;">
+          f(x) = √(x − 4)<br>
+          x ≥ 4
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Example 1</h3>
+    <h2>Domain of a Rational Function</h2>
+    <p>Find the domain of <span class="math-inline">f(x) = 5 / (x² − 9)</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> Set the denominator ≠ 0:</div>
+      <div class="step"><span class="step-num">2.</span> x² − 9 ≠ 0</div>
+      <div class="step"><span class="step-num">3.</span> x² ≠ 9</div>
+      <div class="step"><span class="step-num">4.</span> x ≠ 3  and  x ≠ −3</div>
+    </div>
+    <p style="margin-top:12px;"><strong>Domain:</strong> all real numbers except 3 and −3.</p>
+    <p>In interval notation: <span class="math-inline">(−∞, −3) ∪ (−3, 3) ∪ (3, +∞)</span></p>
+  </section>
+
+  <section>
+    <h3>Example 2</h3>
+    <h2>Domain of a Square Root Function</h2>
+    <p>Find the domain of <span class="math-inline">g(x) = √(2x − 6)</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> The expression inside √ must be ≥ 0:</div>
+      <div class="step"><span class="step-num">2.</span> 2x − 6 ≥ 0</div>
+      <div class="step"><span class="step-num">3.</span> 2x ≥ 6</div>
+      <div class="step"><span class="step-num">4.</span> x ≥ 3</div>
+    </div>
+    <p style="margin-top:12px;"><strong>Domain:</strong> <span class="math-inline">x ≥ 3</span>, or in interval notation: <span class="math-inline">[3, +∞)</span></p>
+  </section>
+
+  <section>
+    <h3>Finding Range</h3>
+    <h2>Determining the Range</h2>
+    <p>The range can be trickier to find analytically. For simpler functions, think about what outputs are possible:</p>
+
+    <p><strong>Linear functions</strong> like <span class="math-inline">f(x) = 2x + 1</span>: domain and range are both all real numbers.</p>
+
+    <p><strong>Quadratic functions</strong> like <span class="math-inline">f(x) = x²</span>: since squaring always gives a non-negative result, the range is <span class="math-inline">f(x) ≥ 0</span>, or <span class="math-inline">[0, +∞)</span>.</p>
+
+    <p><strong>Square root functions</strong> like <span class="math-inline">f(x) = √x</span>: the output is always ≥ 0, so range is <span class="math-inline">[0, +∞)</span>.</p>
+
+    <p style="margin-top:12px;">For complex functions, graphing is often the best way to see the range visually.</p>
+  </section>
+
+  <section>
+    <h3>Example 3</h3>
+    <h2>Range of a Quadratic</h2>
+    <p>Find the range of <span class="math-inline">f(x) = (x − 2)² + 3</span>.</p>
+    <div class="math-block">
+      <div class="step"><span class="step-num">1.</span> (x − 2)² is always ≥ 0 (squaring anything is non-negative)</div>
+      <div class="step"><span class="step-num">2.</span> So the minimum value of (x − 2)² is 0, when x = 2</div>
+      <div class="step"><span class="step-num">3.</span> Therefore the minimum of f(x) = 0 + 3 = 3</div>
+      <div class="step"><span class="step-num">4.</span> f(x) can grow arbitrarily large as x moves away from 2</div>
+    </div>
+    <p style="margin-top:12px;"><strong>Range:</strong> <span class="math-inline">f(x) ≥ 3</span>, or <span class="math-inline">[3, +∞)</span></p>
+  </section>
+
+  <section class="section-warn">
+    <h3>Watch Out</h3>
+    <h2>Common Mistakes</h2>
+    <ul class="check-list">
+      <li class="bad">Confusing domain (inputs) and range (outputs)</li>
+      <li class="bad">Forgetting that <span class="math-inline">√(x)</span> requires the inside to be ≥ 0 (not just > 0 — 0 is fine!)</li>
+      <li class="bad">Only looking for one restriction when there might be multiple (e.g., both a square root AND a denominator)</li>
+      <li class="ok">Domain = restrictions on x. Range = what f(x) can produce.</li>
+      <li class="ok">The inside of an even root must be ≥ 0. The denominator must be ≠ 0.</li>
+    </ul>
+  </section>
+
+  <section class="section-green">
+    <h3>Your Turn</h3>
+    <h2>Try It Yourself</h2>
+
+    <p><strong>Q1.</strong> Find the domain of <span class="math-inline">f(x) = 1/(x + 7)</span>.</p>
+    <details style="margin-top:8px; margin-bottom:20px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <p style="margin-top:10px;">Set denominator ≠ 0: x + 7 ≠ 0, so <strong>x ≠ −7</strong>. Domain: all reals except −7.</p>
+    </details>
+
+    <p><strong>Q2.</strong> Find the domain of <span class="math-inline">g(x) = √(x + 5)</span>.</p>
+    <details style="margin-top:8px; margin-bottom:20px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <p style="margin-top:10px;">x + 5 ≥ 0, so <strong>x ≥ −5</strong>. Domain: [−5, +∞).</p>
+    </details>
+
+    <p><strong>Q3.</strong> State the range of <span class="math-inline">f(x) = x² + 1</span>.</p>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer; color:var(--accent-blue); font-weight:500;">Show Answer</summary>
+      <p style="margin-top:10px;">x² ≥ 0 always, so f(x) ≥ 0 + 1 = 1. <strong>Range: f(x) ≥ 1</strong>, or [1, +∞).</p>
+    </details>
+  </section>
+
+  <section>
+    <h3>Key Takeaways</h3>
+    <h2>1-Minute Summary</h2>
+    <ul class="check-list">
+      <li class="ok"><strong>Domain</strong> = allowed inputs. <strong>Range</strong> = possible outputs.</li>
+      <li class="ok">Restrict the domain when: denominator could be 0, or even root of a negative</li>
+      <li class="ok">Set denominator ≠ 0 and solve for excluded x values</li>
+      <li class="ok">Set inside of square root ≥ 0 and solve for the domain</li>
+      <li class="ok">Range of <span class="math-inline">x²</span> is always ≥ 0</li>
+    </ul>
+  </section>
+
+  <div class="lesson-nav">
+    <a href="lesson1-2.html" class="btn btn-outline">← Lesson 2: Evaluating Functions</a>
+    <a href="lesson1-4.html" class="btn btn-primary">Next: Function Notation →</a>
+  </div>
+
+</div>
+</body>
+</html>
